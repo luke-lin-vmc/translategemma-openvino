@@ -32,6 +32,8 @@ Then, run the export with Optimum CLI:
 ```sh
 optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
+- When exporting a model, the argument `--weight-format` can be used to quantize the model. The supported weights are `INT4`, `INT8` and `FP16`. Please visit [`OpenVINO model preparation guide`](https://openvinotoolkit.github.io/openvino.genai/docs/guides/model-preparation/convert-to-openvino) for the detail.
+
 
 ## Run
 
@@ -53,7 +55,7 @@ Either --text TEXT or --image IMAGE should be provided
 ```
 - The `--device` can be `CPU`, `GPU` or `NPU`
 
-- Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja)
+- Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja) or locally check `chat_template.jinja` under model_dir
 
 ### Run Text Translation
 Command:
