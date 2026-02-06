@@ -1,6 +1,8 @@
 # About TranslateGemma-OpenVINO
 
-This Python sample code is to run [TranslateGemma](https://huggingface.co/google/gemma-3-4b-it) on Intel devices thru OpenVINO.
+Python sample code that runs [TranslateGemma](https://huggingface.co/google/gemma-3-4b-it) on Intel devices (`CPU`, `GPU`, `NPU`) by using [`OpenVINO GenAI`](
+https://github.com/openvinotoolkit/openvino.genai) pipeline.
+
 
 Files in this repo:
  - [`translate.py`](./translate.py) the main pipeline. (modified from [`visual_language_chat.py`](https://github.com/openvinotoolkit/openvino.genai/blob/releases/2026/0/samples/python/visual_language_chat/visual_language_chat.py))
@@ -14,15 +16,14 @@ Files in this repo:
 
 
 ## Download and convert the model and tokenizers
-
-The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
+Instlal required packages for model export. The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
 
 ```sh
 pip install --upgrade-strategy eager -r export-requirements.txt
 ```
 
 ### Hugging Face login
-The script needs to access Hugging Face models. To get the access, please visit below link and hit "log in" https://huggingface.co/google/gemma-3-4b-it with you account
+The script needs to access Hugging Face models. To get the access, please visit below link with you account https://huggingface.co/google/gemma-3-4b-it and hit `log in`
 
 Make sure your [access token](https://huggingface.co/settings/tokens) has been prepared. Make sure [huggingface-cli](https://huggingface.co/docs/huggingface_hub/v0.30.2/guides/cli) has been installed. Open a Command Prompt, run ```huggingface-cli login``` with your access token
 
@@ -34,7 +35,11 @@ optimum-cli export openvino --model google/gemma-3-4b-it --trust-remote-code gem
 
 ## Run
 
-### Usage
+### Install required packages
+```
+pip install -r deployment-requirements.txt
+```
+### Pipeline usage
 ```
 translate.py --model_dir MODEL_DIR
              --text TEXT
@@ -46,11 +51,11 @@ translate.py --model_dir MODEL_DIR
 The following arguments are required: --model_dir, --source_lang_code, -target_lang_code
 Either --text TEXT or --image IMAGE should be provided
 ```
-The `--device` can be `CPU`, `GPU` or `NPU`
+- The `--device` can be `CPU`, `GPU` or `NPU`
 
-Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja)
+- Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja)
 
-## Text translation:
+### Run Text Translation
 Command:
 ```
 python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
@@ -63,7 +68,7 @@ Output:
 As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
 ```
 
-## Image translation:
+### Run Image Translation
 Command:
 ```
 python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
