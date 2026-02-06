@@ -1,0 +1,128 @@
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code en --target_lang_code zh --text text_en.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'text': 'Good morning everyone. How did you all spend your weekend? Did\nyou go hiking perhaps or climb the mountains? Guess what I\ndid. Not hiking, not climbing, no – I spent the whole of\nyesterday afternoon learning vocab with my best friend Tony! That\nsounds a bit weird and boring, doesn’t it? But in fact it was\nquite the opposite so keep listening and I’ll tell you more…\nLet me think, it was probably a Friday afternoon when Tony and I\nwere on our way home after school and both noticed a giant\nposter placed just at the entrance of subway line 1 ‘Volunteers\nwanted - £50 awards to be won.’ £50 – it’s a lot right?\nObviously, Tony and I stopped to read this poster in more detail.\nThis poster says: ‘A test about computer-based vocab learning\nmethod needs volunteers’. Specifically, ‘volunteers are divided to\ntwo groups. The first group will learn with computers, while the\nsecond group will learn the same words with traditional printed\nbooks.’ Fellow classmates, you know how torturing it is to\nmemorise English vocabulary, don’t you? But as Tony and I\nboth wanted the £50 award, we still decided to apply to be\nvolunteers and luckily we ended up in the first group.\nIt was fun because it was designed like a game. First of all, the\nscreen shows you 5 words and their meanings, and then a teacher\npops up and reads each word aloud and explains its usage in\nsentences and context. You then have to read these words as\ncorrectly as possible so that the computer can identify the words\nand give you a score. Then you enter a battle part – yes, that’s\nright, the fun part is you get a chance to test your skills and beat\nothers.\nAlthough Tony and I didn’t get the £50, this computer-based\nlearning experience completely changed our attitudes to lexical\nlearning and was a great way to spend our weekend.\nThank you Miss Stanley for asking me to deliver this speech and\nthank you all for listening.\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Produce only the Chinese translation, without any additional explanations or commentary. Please translate the following English text into Chinese:
+
+
+Good morning everyone. How did you all spend your weekend? Did
+you go hiking perhaps or climb the mountains? Guess what I
+did. Not hiking, not climbing, no – I spent the whole of
+yesterday afternoon learning vocab with my best friend Tony! That
+sounds a bit weird and boring, doesn’t it? But in fact it was
+quite the opposite so keep listening and I’ll tell you more…
+Let me think, it was probably a Friday afternoon when Tony and I
+were on our way home after school and both noticed a giant
+poster placed just at the entrance of subway line 1 ‘Volunteers
+wanted - £50 awards to be won.’ £50 – it’s a lot right?
+Obviously, Tony and I stopped to read this poster in more detail.
+This poster says: ‘A test about computer-based vocab learning
+method needs volunteers’. Specifically, ‘volunteers are divided to
+two groups. The first group will learn with computers, while the
+second group will learn the same words with traditional printed
+books.’ Fellow classmates, you know how torturing it is to
+memorise English vocabulary, don’t you? But as Tony and I
+both wanted the £50 award, we still decided to apply to be
+volunteers and luckily we ended up in the first group.
+It was fun because it was designed like a game. First of all, the
+screen shows you 5 words and their meanings, and then a teacher
+pops up and reads each word aloud and explains its usage in
+sentences and context. You then have to read these words as
+correctly as possible so that the computer can identify the words
+and give you a score. Then you enter a battle part – yes, that’s
+right, the fun part is you get a chance to test your skills and beat
+others.
+Although Tony and I didn’t get the £50, this computer-based
+learning experience completely changed our attitudes to lexical
+learning and was a great way to spend our weekend.
+Thank you Miss Stanley for asking me to deliver this speech and
+thank you all for listening.<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+早上好，大家。你们周末过得怎么样？你们有没有去远足或者爬山呢？我想，我昨天下午一直在和我的好朋友Tony一起学习词汇。听起来有点奇怪和无聊，对吧？但实际上，这反而非常有趣，请继续听下去，我会告诉你们更多。
+
+我想，大概是在周五下午，我和Tony放学后，我们注意到地铁1号线的入口处贴着一个巨大的海报：“招募志愿者 - 奖金50英镑”。 50英镑，这可不少吧？ 显然，我和Tony都停下来仔细阅读了这张海报。海报上写着：“需要志愿者参与一项关于电脑辅助词汇学习的方法测试。具体来说，志愿者将被分为两组。第一组将使用电脑学习，而第二组将使用传统的印刷书籍学习相同的词汇。” 同学们，你们都知道学习英语词汇有多么困难，对吧？ 但因为我和Tony都想获得这50英镑的奖金，我们最终还是决定申请成为志愿者，而且我们幸运地被分到了第一组。
+
+这个过程很有趣，因为它设计成了一种游戏。首先，屏幕上会显示5个词语及其含义，然后一位老师会念出每个词语，并解释它们在句子和语境中的用法。然后，你需要尽可能正确地阅读这些词语，以便电脑能够识别它们并给你评分。接下来，进入一个竞赛环节——没错，最有趣的部分就是你可以测试自己的能力，并与其他参与者竞争。
+
+虽然我和Tony没有获得50英镑的奖金，但这次电脑辅助的学习经历彻底改变了我们对词汇学习的态度，也让我们度过了一个愉快的周末。
+
+感谢史丹利老师邀请我来做这个演讲，感谢大家倾听。
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code en --target_lang_code zh --image image_en.png
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Please translate the English text in the provided image into Chinese. Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+请限制使用电脑，以便他人可以查看电子邮件。 感谢您。
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Pedestrian Zone
+
+Child Supervision
+
+IZS, CBS in Supervision
+0 - 24 hours
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
