@@ -30,7 +30,7 @@ Make sure your [access token](https://huggingface.co/settings/tokens) has been p
 ### Export model
 Then, run the export with Optimum CLI:
 ```sh
-optimum-cli export openvino --model google/gemma-3-4b-it --trust-remote-code gemma-3-4b-it
+optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
 
 ## Run
