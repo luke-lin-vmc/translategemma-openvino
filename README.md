@@ -1,6 +1,6 @@
 # About TranslateGemma-OpenVINO
 
-Python sample code that runs [TranslateGemma](https://huggingface.co/google/gemma-3-4b-it) on Intel devices (`CPU`, `GPU`, `NPU`) by using [`OpenVINO GenAI`](
+Python sample code that runs [TranslateGemma](https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/) on Intel devices (`CPU`, `GPU`, `NPU`) by using [`OpenVINO GenAI`](
 https://github.com/openvinotoolkit/openvino.genai) pipeline.
 
 
@@ -24,7 +24,7 @@ pip install --upgrade-strategy eager -r export-requirements.txt
 ```
 
 ### Hugging Face login
-The script needs to access Hugging Face models. To get the access, please visit  https://huggingface.co/google/gemma-3-4b-it and hit `log in` to login with you account
+The script needs to access Hugging Face models. To get the access, please visit  https://huggingface.co/google/translategemma-4b-it and hit `log in` to login with you account
 
 Make sure your [access token](https://huggingface.co/settings/tokens) has been prepared. Make sure [huggingface-cli](https://huggingface.co/docs/huggingface_hub/v0.30.2/guides/cli) has been installed. Open a Command Prompt, run ```huggingface-cli login``` with your access token
 ```sh
