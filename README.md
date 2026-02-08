@@ -24,20 +24,20 @@ pip install --upgrade-strategy eager -r export-requirements.txt
 ```
 
 ### Hugging Face login
-The script needs to access Hugging Face models. To get the access, please visit below link with you account https://huggingface.co/google/gemma-3-4b-it and hit `log in`
+The script needs to access Hugging Face models. To get the access, please visit  https://huggingface.co/google/gemma-3-4b-it and hit `log in` to login with you account
 
 Make sure your [access token](https://huggingface.co/settings/tokens) has been prepared. Make sure [huggingface-cli](https://huggingface.co/docs/huggingface_hub/v0.30.2/guides/cli) has been installed. Open a Command Prompt, run ```huggingface-cli login``` with your access token
 ```sh
 pip install "huggingface_hub[cli]<1.0,>=0.34.0"
 huggingface-cli login
 ```
-- transformers 4.55.4 requires huggingface-hub<1.0,>=0.34.0
+- Transformers 4.55.4 requires huggingface-hub<1.0,>=0.34.0
 ### Download and export model
 Then, run the export with Optimum CLI:
 ```sh
 optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
-- Exported models will be under model_dir(`translategemma-4b-it` in this case) directory
+- Exported models will be under model_dir (`translategemma-4b-it` in this example)
 - The argument `--weight-format` can be used to quantize the model. See [Quantization](#Quantization) for the detail
 
 
@@ -56,12 +56,10 @@ translate.py --model_dir MODEL_DIR
              --device {CPU,GPU,NPU}
              --source_lang_code SOURCE_LANG_CODE
              --target_lang_code TARGET_LANG_CODE
-
-The following arguments are required: --model_dir, --source_lang_code, -target_lang_code
-Either --text TEXT or --image IMAGE should be provided
 ```
+- The arguments `--model_dir`, `--source_lang_code` and `-target_lang_code` are required:
+- Either `--text TEXT` or `--image IMAGE` should be provided
 - The `--device` can be `CPU`, `GPU` or `NPU`
-
 - Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja) or locally check `chat_template.jinja` under model_dir
 
 ### Run Text Translation
@@ -71,6 +69,7 @@ python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_
 ```
 Result:
 ```
+Input:
 白日依山盡，黃河入海流；欲窮千里目，更上一層樓。
 
 Output:
@@ -107,12 +106,14 @@ The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` 
 * ```NPU: Intel(R) AI Boost, driver 32.0.100.4514 (12/17/2025)```
 
 ### Result
+```
 | Model                      | CPU    | GPU    | NPU    |
 |----------------------------|--------|--------|--------|
 | translategemma-4b-it       | OK     | OK     | OK     |
 | translategemma-4b-it(int8) | OK     | OK     | OK     |
 | translategemma-4b-it(int4) | OK     | OK     | Fail*  |
 | translategemma-4b-it(nf4)  | OK     | OK     | OK**   |
+```
 - The int4 model fails to run on NPU, check [`log.txt`](./log.txt) for the detail
 - The nf4 model can run on NPU but very slow
 ### Log
