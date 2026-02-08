@@ -10,14 +10,14 @@ Files in this repo:
  - [`deployment-requirements.txt`](./deployment-requirements.txt) required Python packages for model deployment. ([`download link`](https://github.com/openvinotoolkit/openvino.genai/blob/releases/2026/0/samples/deployment-requirements.txt))
  - [`chat_template-gemma3.json`](./chat_template-gemma3.json) Gemma3 chat_template used to workaround the validation error of OV GenAI VLM pipeline ([`download link`](https://huggingface.co/google/gemma-3-4b-it/blob/main/chat_template.json))
 - [`text_en.txt`](./text_en.txt) an English text file used to test text translation. ([`source`](https://learning.cambridgeinternational.org/classroom/pluginfile.php/219010/mod_label/intro/Writing_a_speech.pdf))
-- [`text_zh-TW.txt`](./text_zh-TW.txt) an Chinese(Traditional) text file used to test text translation. ([`source`](https://zh.wikipedia.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93))
+- [`text_zh-TW.txt`](./text_zh-TW.txt) a (Traditional)Chinese text file used to test text translation. ([`source`](https://zh.wikipedia.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93))
 - [`image_cs.jpg`](./image_cs.jpg) an image that contains Czech characters used to test image translation. ([`source`](https://c7.alamy.com/comp/2YAX36N/traffic-signs-in-czech-republic-pedestrian-zone-2YAX36N.jpg))
 - [`image_en.png`](./image_en.png) an image that contains English characters used to test image translation. ([`source`](https://raw.githubusercontent.com/esalesky/vistra-benchmark/refs/heads/main/images/f488c322.png))
 
 # Quick Start Guide
 ## Prepare Model
 ### Install required packages
-Input the following command to instlal required packages for model export. The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
+Input the following command to install required packages for model export. The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
 
 ```sh
 pip install --upgrade-strategy eager -r export-requirements.txt
@@ -38,7 +38,7 @@ Then, run the export with Optimum CLI:
 optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
 - Exported models will be under model_dir(`translategemma-4b-it` in this case) directory
-- When exporting a model, the argument `--weight-format` can be used to quantize the model. The supported weights are `INT4`, `INT8` and `FP16`. Please visit [`OpenVINO model preparation guide`](https://openvinotoolkit.github.io/openvino.genai/docs/guides/model-preparation/convert-to-openvino) for the detail.
+- The argument `--weight-format` can be used to quantize the model. See [Quantization](#Quantization) for the detail
 
 
 ## Run
@@ -95,13 +95,26 @@ IZS, CBS in Supervision
 0 - 24 hours
 ```
 
-## Log
-### Tested devices
-The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` system, with
-* ```iGPU: Intel(R) Arc(TM) 130V GPU, driver 32.0.101.8425 (1/16/2026)```
+## Quantization
+When exporting a model, the argument `--weight-format` can be used to quantize the model. The supported weights are `int8`, `int4` and `nf4`. Please visit [`OpenVINO model preparation guide`](https://openvinotoolkit.github.io/openvino.genai/docs/guides/model-preparation/convert-to-openvino) for the detail.
+
+```sh
+optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format int8 translategemma-4b-it_int8
+```
+### Tested device
+The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` system with 32GB memory. GPU/NPU driver info below
+* ```GPU: Intel(R) Arc(TM) 130V GPU, driver 32.0.101.8425 (1/16/2026)```
 * ```NPU: Intel(R) AI Boost, driver 32.0.100.4514 (12/17/2025)```
 
-### Sample log
+### Result
+| Model                      | CPU    | GPU    | NPU    |
+|----------------------------|--------|--------|--------|
+| translategemma-4b-it       | OK     | OK     | OK     |
+| translategemma-4b-it(int8) | OK     | OK     | OK     |
+| translategemma-4b-it(int4) | OK     | OK     | Fail*  |
+| translategemma-4b-it(nf4)  | OK     | OK     | OK**   |
+- The int4 model fails to run on NPU, check [`log.txt`](./log.txt) for the detail
+- The nf4 model can run on NPU but very slow
+### Log
 [`log.txt`](./log.txt) is provided for reference
-
 

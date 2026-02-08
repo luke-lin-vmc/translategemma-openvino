@@ -1,7 +1,513 @@
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python --version
+Python 3.13.11
+
 (python313_venv) C:\GitHub\translategemma-openvino>
-(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python -m pip install --upgrade pip
+Requirement already satisfied: pip in C:\Python\python313_venv\Lib\site-packages (26.0.1)
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>pip list
+Package Version
+------- -------
+pip     26.0.1
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>pip install --upgrade-strategy eager -r export-requirements.txt
+Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cpu, https://storage.openvinotoolkit.org/simple/wheels/nightly
+Ignoring numpy: markers 'platform_system == "Darwin" and platform_machine == "x86_64"' don't match your environment
+Ignoring safetensors: markers 'platform_system == "Darwin" and platform_machine == "x86_64"' don't match your environment
+Ignoring torchvision: markers 'platform_system == "Darwin" and platform_machine == "x86_64"' don't match your environment
+Collecting openvino-tokenizers~=2026.0.0.0.dev (from openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached https://storage.openvinotoolkit.org/wheels/nightly/openvino-tokenizers/openvino_tokenizers-2026.0.0.0rc2-py3-none-win_amd64.whl (14.0 MB)
+Collecting optimum-intel==1.27.0 (from optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached optimum_intel-1.27.0-py3-none-any.whl.metadata (9.7 kB)
+Collecting einops==0.8.1 (from -r export-requirements.txt (line 7))
+  Using cached einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+Collecting transformers_stream_generator==0.0.5 (from -r export-requirements.txt (line 8))
+  Using cached transformers_stream_generator-0.0.5-py3-none-any.whl
+Collecting diffusers==0.35.2 (from -r export-requirements.txt (line 9))
+  Using cached diffusers-0.35.2-py3-none-any.whl.metadata (20 kB)
+Collecting timm==1.0.22 (from -r export-requirements.txt (line 10))
+  Using cached timm-1.0.22-py3-none-any.whl.metadata (63 kB)
+Collecting torchvision==0.23.0 (from -r export-requirements.txt (line 13))
+  Using cached https://download.pytorch.org/whl/cpu/torchvision-0.23.0%2Bcpu-cp313-cp313-win_amd64.whl.metadata (6.3 kB)
+Collecting transformers==4.55.4 (from -r export-requirements.txt (line 14))
+  Using cached transformers-4.55.4-py3-none-any.whl.metadata (41 kB)
+Collecting hf_transfer==0.1.9 (from -r export-requirements.txt (line 15))
+  Using cached hf_transfer-0.1.9-cp38-abi3-win_amd64.whl.metadata (1.8 kB)
+Collecting backoff==2.2.1 (from -r export-requirements.txt (line 16))
+  Using cached backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
+Collecting peft==0.17.1 (from -r export-requirements.txt (line 17))
+  Using cached peft-0.17.1-py3-none-any.whl.metadata (14 kB)
+Collecting torch>=2.1 (from optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached https://download.pytorch.org/whl/cpu/torch-2.10.0%2Bcpu-cp313-cp313-win_amd64.whl.metadata (29 kB)
+Collecting optimum-onnx~=0.1.0 (from optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached optimum_onnx-0.1.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting filelock (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached filelock-3.20.3-py3-none-any.whl.metadata (2.1 kB)
+Collecting huggingface-hub<1.0,>=0.34.0 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Collecting numpy>=1.17 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached numpy-2.4.2-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Collecting packaging>=20.0 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pyyaml>=5.1 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached pyyaml-6.0.3-cp313-cp313-win_amd64.whl.metadata (2.4 kB)
+Collecting regex!=2019.12.17 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached regex-2026.1.15-cp313-cp313-win_amd64.whl.metadata (41 kB)
+Collecting requests (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting tokenizers<0.22,>=0.21 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
+Collecting safetensors>=0.4.3 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached safetensors-0.7.0-cp38-abi3-win_amd64.whl.metadata (4.2 kB)
+Collecting tqdm>=4.27 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+Collecting importlib_metadata (from diffusers==0.35.2->-r export-requirements.txt (line 9))
+  Using cached importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting Pillow (from diffusers==0.35.2->-r export-requirements.txt (line 9))
+  Using cached pillow-12.1.0-cp313-cp313-win_amd64.whl.metadata (9.0 kB)
+Collecting torch>=2.1 (from optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached https://download.pytorch.org/whl/cpu/torch-2.8.0%2Bcpu-cp313-cp313-win_amd64.whl.metadata (29 kB)
+Collecting psutil (from peft==0.17.1->-r export-requirements.txt (line 17))
+  Using cached psutil-7.2.2-cp37-abi3-win_amd64.whl.metadata (22 kB)
+Collecting accelerate>=0.21.0 (from peft==0.17.1->-r export-requirements.txt (line 17))
+  Using cached accelerate-1.12.0-py3-none-any.whl.metadata (19 kB)
+Collecting nncf>=2.19.0 (from optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached nncf-2.19.0-py3-none-any.whl.metadata (11 kB)
+Collecting typing-extensions>=4.10.0 (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached https://download.pytorch.org/whl/typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting sympy>=1.13.3 (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
+Collecting setuptools (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached setuptools-81.0.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting openvino~=2026.0.0.dev (from openvino-tokenizers~=2026.0.0.0.dev->openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached https://storage.openvinotoolkit.org/wheels/nightly/openvino/openvino-2026.0.0rc2-20958-cp313-cp313-win_amd64.whl (69.2 MB)
+Collecting openvino-telemetry>=2023.2.1 (from openvino~=2026.0.0.dev->openvino-tokenizers~=2026.0.0.0.dev->openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached openvino_telemetry-2025.2.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting tiktoken>=0.3.0 (from openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached tiktoken-0.12.0-cp313-cp313-win_amd64.whl.metadata (6.9 kB)
+Collecting optimum~=2.1.0 (from optimum-onnx~=0.1.0->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached optimum-2.1.0-py3-none-any.whl.metadata (14 kB)
+Collecting onnx (from optimum-onnx~=0.1.0->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached onnx-1.20.1-cp312-abi3-win_amd64.whl.metadata (8.6 kB)
+Collecting jsonschema>=3.2.0 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting natsort>=7.1.0 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached natsort-8.4.0-py3-none-any.whl.metadata (21 kB)
+Collecting networkx (from torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting ninja<1.14,>=1.10.0.post2 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached ninja-1.13.0-py3-none-win_amd64.whl.metadata (5.1 kB)
+Collecting numpy>=1.17 (from transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached numpy-2.2.6-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting pandas<2.4,>=1.1.5 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pandas-2.3.3-cp313-cp313-win_amd64.whl.metadata (19 kB)
+Collecting pydot<=3.0.4,>=1.4.1 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pydot-3.0.4-py3-none-any.whl.metadata (10 kB)
+Collecting pymoo>=0.6.0.1 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pymoo-0.6.1.6-cp313-cp313-win_amd64.whl.metadata (6.1 kB)
+Collecting rich>=13.5.2 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached rich-14.3.2-py3-none-any.whl.metadata (18 kB)
+Collecting scikit-learn>=0.24.0 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached scikit_learn-1.8.0-cp313-cp313-win_amd64.whl.metadata (11 kB)
+Collecting scipy>=1.3.2 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached scipy-1.17.0-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting tabulate>=0.9.0 (from nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Collecting python-dateutil>=2.8.2 (from pandas<2.4,>=1.1.5->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas<2.4,>=1.1.5->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas<2.4,>=1.1.5->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting pyparsing>=3.0.9 (from pydot<=3.0.4,>=1.4.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=3.2.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=3.2.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema>=3.2.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema>=3.2.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached rpds_py-0.30.0-cp313-cp313-win_amd64.whl.metadata (4.2 kB)
+Collecting moocore>=0.1.7 (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached moocore-0.2.0-cp310-abi3-win_amd64.whl.metadata (6.5 kB)
+Collecting autograd>=1.4 (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached autograd-1.8.0-py3-none-any.whl.metadata (7.5 kB)
+Collecting cma>=3.2.2 (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached cma-4.4.2-py3-none-any.whl.metadata (8.7 kB)
+Collecting matplotlib>=3 (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached matplotlib-3.10.8-cp313-cp313-win_amd64.whl.metadata (52 kB)
+Collecting alive_progress (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached alive_progress-3.3.0-py3-none-any.whl.metadata (72 kB)
+Collecting Deprecated (from pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached deprecated-1.3.1-py2.py3-none-any.whl.metadata (5.9 kB)
+Collecting contourpy>=1.0.1 (from matplotlib>=3->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached contourpy-1.3.3-cp313-cp313-win_amd64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib>=3->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib>=3->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached fonttools-4.61.1-cp313-cp313-win_amd64.whl.metadata (116 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib>=3->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached kiwisolver-1.4.9-cp313-cp313-win_amd64.whl.metadata (6.4 kB)
+Collecting cffi>=1.17.1 (from moocore>=0.1.7->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached cffi-2.0.0-cp313-cp313-win_amd64.whl.metadata (2.6 kB)
+Collecting platformdirs (from moocore>=0.1.7->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached platformdirs-4.5.1-py3-none-any.whl.metadata (12 kB)
+Collecting pycparser (from cffi>=1.17.1->moocore>=0.1.7->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas<2.4,>=1.1.5->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.5.2->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.5.2->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.5.2->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting joblib>=1.3.0 (from scikit-learn>=0.24.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting threadpoolctl>=3.2.0 (from scikit-learn>=0.24.0->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests->transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl.metadata (38 kB)
+Collecting idna<4,>=2.5 (from requests->transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached certifi-2026.1.4-py3-none-any.whl.metadata (2.5 kB)
+Collecting colorama (from tqdm>=4.27->transformers==4.55.4->-r export-requirements.txt (line 14))
+  Using cached https://download.pytorch.org/whl/colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting sentencepiece!=0.1.92,>=0.1.91 (from transformers[sentencepiece]>=4.36.0; extra == "transformers"->openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached sentencepiece-0.2.1-cp313-cp313-win_amd64.whl.metadata (10 kB)
+Collecting protobuf (from transformers[sentencepiece]>=4.36.0; extra == "transformers"->openvino-tokenizers[transformers]~=2026.0.0.0.dev->-r export-requirements.txt (line 3))
+  Using cached protobuf-6.33.5-cp310-abi3-win_amd64.whl.metadata (593 bytes)
+Collecting about-time==4.2.1 (from alive_progress->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached about_time-4.2.1-py3-none-any.whl.metadata (13 kB)
+Collecting graphemeu==0.7.2 (from alive_progress->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached graphemeu-0.7.2-py3-none-any.whl.metadata (7.8 kB)
+Collecting wrapt<3,>=1.10 (from Deprecated->pymoo>=0.6.0.1->nncf>=2.19.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached wrapt-2.1.1-cp313-cp313-win_amd64.whl.metadata (7.6 kB)
+Collecting zipp>=3.20 (from importlib_metadata->diffusers==0.35.2->-r export-requirements.txt (line 9))
+  Using cached zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch>=2.1->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached markupsafe-3.0.3-cp313-cp313-win_amd64.whl.metadata (2.8 kB)
+Collecting ml_dtypes>=0.5.0 (from onnx->optimum-onnx~=0.1.0->optimum-intel==1.27.0->optimum-intel[nncf]==1.27.0->-r export-requirements.txt (line 4))
+  Using cached ml_dtypes-0.5.4-cp313-cp313-win_amd64.whl.metadata (9.2 kB)
+Using cached optimum_intel-1.27.0-py3-none-any.whl (371 kB)
+Using cached transformers-4.55.4-py3-none-any.whl (11.3 MB)
+Using cached einops-0.8.1-py3-none-any.whl (64 kB)
+Using cached diffusers-0.35.2-py3-none-any.whl (4.1 MB)
+Using cached timm-1.0.22-py3-none-any.whl (2.5 MB)
+Using cached https://download.pytorch.org/whl/cpu/torchvision-0.23.0%2Bcpu-cp313-cp313-win_amd64.whl (1.6 MB)
+Using cached hf_transfer-0.1.9-cp38-abi3-win_amd64.whl (1.2 MB)
+Using cached backoff-2.2.1-py3-none-any.whl (15 kB)
+Using cached peft-0.17.1-py3-none-any.whl (504 kB)
+Using cached https://download.pytorch.org/whl/cpu/torch-2.8.0%2Bcpu-cp313-cp313-win_amd64.whl (619.4 MB)
+Using cached huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+Using cached optimum_onnx-0.1.0-py3-none-any.whl (194 kB)
+Using cached optimum-2.1.0-py3-none-any.whl (161 kB)
+Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl (2.5 MB)
+Using cached accelerate-1.12.0-py3-none-any.whl (380 kB)
+Using cached fsspec-2026.2.0-py3-none-any.whl (202 kB)
+Using cached nncf-2.19.0-py3-none-any.whl (1.5 MB)
+Using cached networkx-3.4.2-py3-none-any.whl (1.7 MB)
+Using cached ninja-1.13.0-py3-none-win_amd64.whl (309 kB)
+Using cached numpy-2.2.6-cp313-cp313-win_amd64.whl (12.6 MB)
+Using cached pandas-2.3.3-cp313-cp313-win_amd64.whl (11.0 MB)
+Using cached pydot-3.0.4-py3-none-any.whl (35 kB)
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached attrs-25.4.0-py3-none-any.whl (67 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Using cached natsort-8.4.0-py3-none-any.whl (38 kB)
+Using cached openvino_telemetry-2025.2.0-py3-none-any.whl (25 kB)
+Using cached packaging-26.0-py3-none-any.whl (74 kB)
+Using cached pillow-12.1.0-cp313-cp313-win_amd64.whl (7.0 MB)
+Using cached pymoo-0.6.1.6-cp313-cp313-win_amd64.whl (1.8 MB)
+Using cached autograd-1.8.0-py3-none-any.whl (51 kB)
+Using cached cma-4.4.2-py3-none-any.whl (312 kB)
+Using cached matplotlib-3.10.8-cp313-cp313-win_amd64.whl (8.1 MB)
+Using cached contourpy-1.3.3-cp313-cp313-win_amd64.whl (226 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.61.1-cp313-cp313-win_amd64.whl (2.3 MB)
+Using cached kiwisolver-1.4.9-cp313-cp313-win_amd64.whl (73 kB)
+Using cached moocore-0.2.0-cp310-abi3-win_amd64.whl (485 kB)
+Using cached cffi-2.0.0-cp313-cp313-win_amd64.whl (183 kB)
+Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Using cached pyyaml-6.0.3-cp313-cp313-win_amd64.whl (154 kB)
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Using cached regex-2026.1.15-cp313-cp313-win_amd64.whl (277 kB)
+Using cached rich-14.3.2-py3-none-any.whl (309 kB)
+Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached rpds_py-0.30.0-cp313-cp313-win_amd64.whl (240 kB)
+Using cached safetensors-0.7.0-cp38-abi3-win_amd64.whl (341 kB)
+Using cached scikit_learn-1.8.0-cp313-cp313-win_amd64.whl (8.0 MB)
+Using cached joblib-1.5.3-py3-none-any.whl (309 kB)
+Using cached scipy-1.17.0-cp313-cp313-win_amd64.whl (36.3 MB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached tabulate-0.9.0-py3-none-any.whl (35 kB)
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Using cached tiktoken-0.12.0-cp313-cp313-win_amd64.whl (879 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl (107 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached certifi-2026.1.4-py3-none-any.whl (152 kB)
+Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+Using cached sentencepiece-0.2.1-cp313-cp313-win_amd64.whl (1.1 MB)
+Using cached https://download.pytorch.org/whl/typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Using cached alive_progress-3.3.0-py3-none-any.whl (78 kB)
+Using cached about_time-4.2.1-py3-none-any.whl (13 kB)
+Using cached graphemeu-0.7.2-py3-none-any.whl (22 kB)
+Using cached deprecated-1.3.1-py2.py3-none-any.whl (11 kB)
+Using cached wrapt-2.1.1-cp313-cp313-win_amd64.whl (60 kB)
+Using cached filelock-3.20.3-py3-none-any.whl (16 kB)
+Using cached importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+Using cached zipp-3.23.0-py3-none-any.whl (10 kB)
+Using cached https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp313-cp313-win_amd64.whl (15 kB)
+Using cached onnx-1.20.1-cp312-abi3-win_amd64.whl (16.4 MB)
+Using cached ml_dtypes-0.5.4-cp313-cp313-win_amd64.whl (212 kB)
+Using cached protobuf-6.33.5-cp310-abi3-win_amd64.whl (437 kB)
+Using cached platformdirs-4.5.1-py3-none-any.whl (18 kB)
+Using cached psutil-7.2.2-cp37-abi3-win_amd64.whl (137 kB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Using cached setuptools-81.0.0-py3-none-any.whl (1.1 MB)
+Installing collected packages: pytz, openvino-telemetry, mpmath, zipp, wrapt, urllib3, tzdata, typing-extensions, threadpoolctl, tabulate, sympy, six, setuptools, sentencepiece, safetensors, rpds-py, regex, pyyaml, pyparsing, pygments, pycparser, psutil, protobuf, platformdirs, Pillow, packaging, numpy, ninja, networkx, natsort, mdurl, MarkupSafe, kiwisolver, joblib, idna, hf_transfer, graphemeu, fsspec, fonttools, filelock, einops, cycler, colorama, charset_normalizer, certifi, backoff, attrs, about-time, tqdm, scipy, requests, referencing, python-dateutil, pydot, openvino, ml_dtypes, markdown-it-py, jinja2, importlib_metadata, Deprecated, contourpy, cma, cffi, autograd, alive_progress, torch, tiktoken, scikit-learn, rich, pandas, openvino-tokenizers, onnx, moocore, matplotlib, jsonschema-specifications, huggingface-hub, torchvision, tokenizers, pymoo, jsonschema, diffusers, accelerate, transformers, timm, nncf, transformers_stream_generator, peft, optimum, optimum-onnx, optimum-intel
+Successfully installed Deprecated-1.3.1 MarkupSafe-3.0.3 Pillow-12.1.0 about-time-4.2.1 accelerate-1.12.0 alive_progress-3.3.0 attrs-25.4.0 autograd-1.8.0 backoff-2.2.1 certifi-2026.1.4 cffi-2.0.0 charset_normalizer-3.4.4 cma-4.4.2 colorama-0.4.6 contourpy-1.3.3 cycler-0.12.1 diffusers-0.35.2 einops-0.8.1 filelock-3.20.3 fonttools-4.61.1 fsspec-2026.2.0 graphemeu-0.7.2 hf_transfer-0.1.9 huggingface-hub-0.36.2 idna-3.11 importlib_metadata-8.7.1 jinja2-3.1.6 joblib-1.5.3 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kiwisolver-1.4.9 markdown-it-py-4.0.0 matplotlib-3.10.8 mdurl-0.1.2 ml_dtypes-0.5.4 moocore-0.2.0 mpmath-1.3.0 natsort-8.4.0 networkx-3.4.2 ninja-1.13.0 nncf-2.19.0 numpy-2.2.6 onnx-1.20.1 openvino-2026.0.0rc2 openvino-telemetry-2025.2.0 openvino-tokenizers-2026.0.0.0rc2 optimum-2.1.0 optimum-intel-1.27.0 optimum-onnx-0.1.0 packaging-26.0 pandas-2.3.3 peft-0.17.1 platformdirs-4.5.1 protobuf-6.33.5 psutil-7.2.2 pycparser-3.0 pydot-3.0.4 pygments-2.19.2 pymoo-0.6.1.6 pyparsing-3.3.2 python-dateutil-2.9.0.post0 pytz-2025.2 pyyaml-6.0.3 referencing-0.37.0 regex-2026.1.15 requests-2.32.5 rich-14.3.2 rpds-py-0.30.0 safetensors-0.7.0 scikit-learn-1.8.0 scipy-1.17.0 sentencepiece-0.2.1 setuptools-81.0.0 six-1.17.0 sympy-1.14.0 tabulate-0.9.0 threadpoolctl-3.6.0 tiktoken-0.12.0 timm-1.0.22 tokenizers-0.21.4 torch-2.8.0+cpu torchvision-0.23.0+cpu tqdm-4.67.3 transformers-4.55.4 transformers_stream_generator-0.0.5 typing-extensions-4.15.0 tzdata-2025.3 urllib3-2.6.3 wrapt-2.1.1 zipp-3.23.0
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>pip install "huggingface_hub[cli]<1.0,>=0.34.0"
+Requirement already satisfied: huggingface_hub<1.0,>=0.34.0 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub[cli]<1.0,>=0.34.0) (0.36.2)
+Requirement already satisfied: filelock in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (3.20.3)
+Requirement already satisfied: fsspec>=2023.5.0 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (2026.2.0)
+Requirement already satisfied: packaging>=20.9 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (26.0)
+Requirement already satisfied: pyyaml>=5.1 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (6.0.3)
+Requirement already satisfied: requests in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (2.32.5)
+Requirement already satisfied: tqdm>=4.42.1 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (4.67.3)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in C:\Python\python313_venv\Lib\site-packages (from huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (4.15.0)
+Collecting InquirerPy==0.3.4 (from huggingface_hub[cli]<1.0,>=0.34.0)
+  Using cached InquirerPy-0.3.4-py3-none-any.whl.metadata (8.1 kB)
+Collecting pfzy<0.4.0,>=0.3.1 (from InquirerPy==0.3.4->huggingface_hub[cli]<1.0,>=0.34.0)
+  Using cached pfzy-0.3.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting prompt-toolkit<4.0.0,>=3.0.1 (from InquirerPy==0.3.4->huggingface_hub[cli]<1.0,>=0.34.0)
+  Using cached prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+Collecting wcwidth (from prompt-toolkit<4.0.0,>=3.0.1->InquirerPy==0.3.4->huggingface_hub[cli]<1.0,>=0.34.0)
+  Using cached wcwidth-0.6.0-py3-none-any.whl.metadata (30 kB)
+Requirement already satisfied: colorama in C:\Python\python313_venv\Lib\site-packages (from tqdm>=4.42.1->huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (0.4.6)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Python\python313_venv\Lib\site-packages (from requests->huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in C:\Python\python313_venv\Lib\site-packages (from requests->huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in C:\Python\python313_venv\Lib\site-packages (from requests->huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (2.6.3)
+Requirement already satisfied: certifi>=2017.4.17 in C:\Python\python313_venv\Lib\site-packages (from requests->huggingface_hub<1.0,>=0.34.0->huggingface_hub[cli]<1.0,>=0.34.0) (2026.1.4)
+Using cached InquirerPy-0.3.4-py3-none-any.whl (67 kB)
+Using cached pfzy-0.3.4-py3-none-any.whl (8.5 kB)
+Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+Using cached wcwidth-0.6.0-py3-none-any.whl (94 kB)
+Installing collected packages: wcwidth, pfzy, prompt-toolkit, InquirerPy
+Successfully installed InquirerPy-0.3.4 pfzy-0.3.4 prompt-toolkit-3.0.52 wcwidth-0.6.0
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>huggingface-cli login
+⚠️  Warning: 'huggingface-cli login' is deprecated. Use 'hf auth login' instead.
+
+    _|    _|  _|    _|    _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|_|_|_|    _|_|      _|_|_|  _|_|_|_|
+    _|    _|  _|    _|  _|        _|          _|    _|_|    _|  _|            _|        _|    _|  _|        _|
+    _|_|_|_|  _|    _|  _|  _|_|  _|  _|_|    _|    _|  _|  _|  _|  _|_|      _|_|_|    _|_|_|_|  _|        _|_|_|
+    _|    _|  _|    _|  _|    _|  _|    _|    _|    _|    _|_|  _|    _|      _|        _|    _|  _|        _|
+    _|    _|    _|_|      _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|        _|    _|    _|_|_|  _|_|_|_|
+
+    A token is already saved on your machine. Run `hf auth whoami` to get more information or `hf auth logout` if you want to log out.
+    Setting a new token will erase the existing one.
+    To log in, `huggingface_hub` requires a token generated from https://huggingface.co/settings/tokens .
+Token can be pasted using 'Right-Click'.
+Enter your token (input will not be visible):
+Add token as git credential? (Y/n) y
+Token is valid (permission: read).
+The token `read_token` has been saved to C:\Users\lukelin1\.cache\huggingface\stored_tokens
+Your token has been saved in your configured git credential helpers (manager).
+Your token has been saved to C:\Users\lukelin1\.cache\huggingface\token
+Login successful.
+The current active token is: `read_token`
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6E19-CE53
+
+ Directory of C:\GitHub\translategemma-openvino
+
+02/08/2026  02:53 PM    <DIR>          .
+02/06/2026  02:00 PM    <DIR>          ..
+02/04/2026  04:31 PM             1,615 chat_template-gemma3.json
+02/06/2026  03:28 PM               319 deployment-requirements.txt
+02/06/2026  03:28 PM               986 export-requirements.txt
+02/06/2026  01:49 PM           116,604 image_cs.jpg
+02/02/2026  05:20 PM           703,073 image_en.png
+02/06/2026  02:03 PM            11,558 LICENSE
+02/06/2026  04:30 PM            10,315 log.txt
+02/08/2026  02:41 PM             5,644 README.md
+02/08/2026  02:53 PM               287 run.bat
+02/06/2026  01:43 PM             1,961 text_en.txt
+02/06/2026  02:40 PM                74 text_zh-TW.txt
+02/06/2026  02:08 PM             5,208 translate.py
+02/08/2026  02:43 PM             2,299 u.txt
+              13 File(s)        859,943 bytes
+               2 Dir(s)  640,086,323,200 bytes free
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:08<00:00,  4.14s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 100% (239 / 239)            | 100% (239 / 239)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:47 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>pip install -r deployment-requirements.txt
+Looking in indexes: https://pypi.org/simple, https://storage.openvinotoolkit.org/simple/wheels/nightly
+Collecting openvino_genai~=2026.0.0.0.dev (from -r deployment-requirements.txt (line 2))
+  Using cached https://storage.openvinotoolkit.org/wheels/nightly/openvino-genai/openvino_genai-2026.0.0.0rc2-2048-cp313-cp313-win_amd64.whl (2.9 MB)
+Collecting librosa==0.11.0 (from -r deployment-requirements.txt (line 3))
+  Using cached librosa-0.11.0-py3-none-any.whl.metadata (8.7 kB)
+Collecting pillow==12.0.0 (from -r deployment-requirements.txt (line 4))
+  Using cached pillow-12.0.0-cp313-cp313-win_amd64.whl.metadata (9.0 kB)
+Collecting json5==0.12.1 (from -r deployment-requirements.txt (line 5))
+  Using cached json5-0.12.1-py3-none-any.whl.metadata (36 kB)
+Collecting pydantic==2.12.5 (from -r deployment-requirements.txt (line 6))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting opencv-python==4.12.0.88 (from -r deployment-requirements.txt (line 7))
+  Using cached opencv_python-4.12.0.88-cp37-abi3-win_amd64.whl.metadata (19 kB)
+Collecting audioread>=2.1.9 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached audioread-3.1.0-py3-none-any.whl.metadata (9.0 kB)
+Collecting numba>=0.51.0 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached numba-0.63.1-cp313-cp313-win_amd64.whl.metadata (3.0 kB)
+Requirement already satisfied: numpy>=1.22.3 in C:\Python\python313_venv\Lib\site-packages (from librosa==0.11.0->-r deployment-requirements.txt (line 3)) (2.2.6)
+Requirement already satisfied: scipy>=1.6.0 in C:\Python\python313_venv\Lib\site-packages (from librosa==0.11.0->-r deployment-requirements.txt (line 3)) (1.17.0)
+Requirement already satisfied: scikit-learn>=1.1.0 in C:\Python\python313_venv\Lib\site-packages (from librosa==0.11.0->-r deployment-requirements.txt (line 3)) (1.8.0)
+Requirement already satisfied: joblib>=1.0 in C:\Python\python313_venv\Lib\site-packages (from librosa==0.11.0->-r deployment-requirements.txt (line 3)) (1.5.3)
+Collecting decorator>=4.3.0 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting soundfile>=0.12.1 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
+Collecting pooch>=1.1 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached pooch-1.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting soxr>=0.3.2 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached soxr-1.0.0-cp312-abi3-win_amd64.whl.metadata (5.6 kB)
+Requirement already satisfied: typing_extensions>=4.1.1 in C:\Python\python313_venv\Lib\site-packages (from librosa==0.11.0->-r deployment-requirements.txt (line 3)) (4.15.0)
+Collecting lazy_loader>=0.1 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting msgpack>=1.0 (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached msgpack-1.1.2-cp313-cp313-win_amd64.whl.metadata (8.4 kB)
+Collecting standard-aifc (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached standard_aifc-3.13.0-py3-none-any.whl.metadata (969 bytes)
+Collecting standard-sunau (from librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached standard_sunau-3.13.0-py3-none-any.whl.metadata (914 bytes)
+Collecting annotated-types>=0.6.0 (from pydantic==2.12.5->-r deployment-requirements.txt (line 6))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic==2.12.5->-r deployment-requirements.txt (line 6))
+  Using cached pydantic_core-2.41.5-cp313-cp313-win_amd64.whl.metadata (7.4 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic==2.12.5->-r deployment-requirements.txt (line 6))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: openvino_tokenizers~=2026.0.0.0.dev in C:\Python\python313_venv\Lib\site-packages (from openvino_genai~=2026.0.0.0.dev->-r deployment-requirements.txt (line 2)) (2026.0.0.0rc2)
+Requirement already satisfied: openvino~=2026.0.0.dev in C:\Python\python313_venv\Lib\site-packages (from openvino_tokenizers~=2026.0.0.0.dev->openvino_genai~=2026.0.0.0.dev->-r deployment-requirements.txt (line 2)) (2026.0.0rc2)
+Requirement already satisfied: openvino-telemetry>=2023.2.1 in C:\Python\python313_venv\Lib\site-packages (from openvino~=2026.0.0.dev->openvino_tokenizers~=2026.0.0.0.dev->openvino_genai~=2026.0.0.0.dev->-r deployment-requirements.txt (line 2)) (2025.2.0)
+Requirement already satisfied: packaging in C:\Python\python313_venv\Lib\site-packages (from lazy_loader>=0.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (26.0)
+Collecting llvmlite<0.47,>=0.46.0dev0 (from numba>=0.51.0->librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached llvmlite-0.46.0-cp313-cp313-win_amd64.whl.metadata (5.1 kB)
+Requirement already satisfied: platformdirs>=2.5.0 in C:\Python\python313_venv\Lib\site-packages (from pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (4.5.1)
+Requirement already satisfied: requests>=2.19.0 in C:\Python\python313_venv\Lib\site-packages (from pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (2.32.5)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Python\python313_venv\Lib\site-packages (from requests>=2.19.0->pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in C:\Python\python313_venv\Lib\site-packages (from requests>=2.19.0->pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in C:\Python\python313_venv\Lib\site-packages (from requests>=2.19.0->pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (2.6.3)
+Requirement already satisfied: certifi>=2017.4.17 in C:\Python\python313_venv\Lib\site-packages (from requests>=2.19.0->pooch>=1.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (2026.1.4)
+Requirement already satisfied: threadpoolctl>=3.2.0 in C:\Python\python313_venv\Lib\site-packages (from scikit-learn>=1.1.0->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (3.6.0)
+Requirement already satisfied: cffi>=1.0 in C:\Python\python313_venv\Lib\site-packages (from soundfile>=0.12.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (2.0.0)
+Requirement already satisfied: pycparser in C:\Python\python313_venv\Lib\site-packages (from cffi>=1.0->soundfile>=0.12.1->librosa==0.11.0->-r deployment-requirements.txt (line 3)) (3.0)
+Collecting standard-chunk (from standard-aifc->librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached standard_chunk-3.13.0-py3-none-any.whl.metadata (860 bytes)
+Collecting audioop-lts (from standard-aifc->librosa==0.11.0->-r deployment-requirements.txt (line 3))
+  Using cached audioop_lts-0.2.2-cp313-abi3-win_amd64.whl.metadata (2.0 kB)
+Using cached librosa-0.11.0-py3-none-any.whl (260 kB)
+Using cached pillow-12.0.0-cp313-cp313-win_amd64.whl (7.0 MB)
+Using cached json5-0.12.1-py3-none-any.whl (36 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached opencv_python-4.12.0.88-cp37-abi3-win_amd64.whl (39.0 MB)
+Using cached pydantic_core-2.41.5-cp313-cp313-win_amd64.whl (2.0 MB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached audioread-3.1.0-py3-none-any.whl (23 kB)
+Using cached decorator-5.2.1-py3-none-any.whl (9.2 kB)
+Using cached lazy_loader-0.4-py3-none-any.whl (12 kB)
+Using cached msgpack-1.1.2-cp313-cp313-win_amd64.whl (72 kB)
+Using cached numba-0.63.1-cp313-cp313-win_amd64.whl (2.8 MB)
+Using cached llvmlite-0.46.0-cp313-cp313-win_amd64.whl (38.1 MB)
+Using cached pooch-1.9.0-py3-none-any.whl (67 kB)
+Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
+Using cached soxr-1.0.0-cp312-abi3-win_amd64.whl (172 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached standard_aifc-3.13.0-py3-none-any.whl (10 kB)
+Using cached audioop_lts-0.2.2-cp313-abi3-win_amd64.whl (30 kB)
+Using cached standard_chunk-3.13.0-py3-none-any.whl (4.9 kB)
+Using cached standard_sunau-3.13.0-py3-none-any.whl (7.4 kB)
+Installing collected packages: standard-chunk, typing-inspection, soxr, pydantic-core, pillow, opencv-python, msgpack, llvmlite, lazy_loader, json5, decorator, audioop-lts, annotated-types, standard-sunau, standard-aifc, soundfile, pydantic, pooch, numba, openvino_genai, audioread, librosa
+  Attempting uninstall: pillow
+    Found existing installation: pillow 12.1.0
+    Uninstalling pillow-12.1.0:
+      Successfully uninstalled pillow-12.1.0
+Successfully installed annotated-types-0.7.0 audioop-lts-0.2.2 audioread-3.1.0 decorator-5.2.1 json5-0.12.1 lazy_loader-0.4 librosa-0.11.0 llvmlite-0.46.0 msgpack-1.1.2 numba-0.63.1 opencv-python-4.12.0.88 openvino_genai-2026.0.0.0rc2 pillow-12.0.0 pooch-1.9.0 pydantic-2.12.5 pydantic-core-2.41.5 soundfile-0.13.1 soxr-1.0.0 standard-aifc-3.13.0 standard-chunk-3.13.0 standard-sunau-3.13.0 typing-inspection-0.4.2
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
 Messages:
 [{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
 
@@ -19,6 +525,111 @@ Output:
 As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
 
 
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea; to see further, one must climb higher.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets behind the mountains, the Yellow River flows into the sea. To see further, one must ascend to a higher level.
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device CPU --source_lang_code en --target_lang_code zh --text text_en.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'text': 'Good morning everyone. How did you all spend your weekend? Did\nyou go hiking perhaps or climb the mountains? Guess what I\ndid. Not hiking, not climbing, no – I spent the whole of\nyesterday afternoon learning vocab with my best friend Tony! That\nsounds a bit weird and boring, doesn’t it? But in fact it was\nquite the opposite so keep listening and I’ll tell you more…\nLet me think, it was probably a Friday afternoon when Tony and I\nwere on our way home after school and both noticed a giant\nposter placed just at the entrance of subway line 1 ‘Volunteers\nwanted - £50 awards to be won.’ £50 – it’s a lot right?\nObviously, Tony and I stopped to read this poster in more detail.\nThis poster says: ‘A test about computer-based vocab learning\nmethod needs volunteers’. Specifically, ‘volunteers are divided to\ntwo groups. The first group will learn with computers, while the\nsecond group will learn the same words with traditional printed\nbooks.’ Fellow classmates, you know how torturing it is to\nmemorise English vocabulary, don’t you? But as Tony and I\nboth wanted the £50 award, we still decided to apply to be\nvolunteers and luckily we ended up in the first group.\nIt was fun because it was designed like a game. First of all, the\nscreen shows you 5 words and their meanings, and then a teacher\npops up and reads each word aloud and explains its usage in\nsentences and context. You then have to read these words as\ncorrectly as possible so that the computer can identify the words\nand give you a score. Then you enter a battle part – yes, that’s\nright, the fun part is you get a chance to test your skills and beat\nothers.\nAlthough Tony and I didn’t get the £50, this computer-based\nlearning experience completely changed our attitudes to lexical\nlearning and was a great way to spend our weekend.\nThank you Miss Stanley for asking me to deliver this speech and\nthank you all for listening.\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Produce only the Chinese translation, without any additional explanations or commentary. Please translate the following English text into Chinese:
+
+
+Good morning everyone. How did you all spend your weekend? Did
+you go hiking perhaps or climb the mountains? Guess what I
+did. Not hiking, not climbing, no – I spent the whole of
+yesterday afternoon learning vocab with my best friend Tony! That
+sounds a bit weird and boring, doesn’t it? But in fact it was
+quite the opposite so keep listening and I’ll tell you more…
+Let me think, it was probably a Friday afternoon when Tony and I
+were on our way home after school and both noticed a giant
+poster placed just at the entrance of subway line 1 ‘Volunteers
+wanted - £50 awards to be won.’ £50 – it’s a lot right?
+Obviously, Tony and I stopped to read this poster in more detail.
+This poster says: ‘A test about computer-based vocab learning
+method needs volunteers’. Specifically, ‘volunteers are divided to
+two groups. The first group will learn with computers, while the
+second group will learn the same words with traditional printed
+books.’ Fellow classmates, you know how torturing it is to
+memorise English vocabulary, don’t you? But as Tony and I
+both wanted the £50 award, we still decided to apply to be
+volunteers and luckily we ended up in the first group.
+It was fun because it was designed like a game. First of all, the
+screen shows you 5 words and their meanings, and then a teacher
+pops up and reads each word aloud and explains its usage in
+sentences and context. You then have to read these words as
+correctly as possible so that the computer can identify the words
+and give you a score. Then you enter a battle part – yes, that’s
+right, the fun part is you get a chance to test your skills and beat
+others.
+Although Tony and I didn’t get the £50, this computer-based
+learning experience completely changed our attitudes to lexical
+learning and was a great way to spend our weekend.
+Thank you Miss Stanley for asking me to deliver this speech and
+thank you all for listening.<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+早上好，大家。你们周末过得怎么样？你们有没有去远足或者爬山呢？猜猜我做了什么。我没有去远足，也没有爬山，而是昨天下午和我的好朋友Tony一起学习词汇。听起来有点奇怪和无聊，对吧？但实际上，这完全相反，请继续听下去，我会告诉你们更多。
+
+我想，大概是在周五下午，我和Tony放学后，我们注意到地铁1号线的入口处贴着一个巨大的海报：“招募志愿者 - 奖金50英镑”。 50英镑，这可不少吧？ 显然，我和Tony都停下来仔细阅读了这张海报。这张海报上写着：“需要志愿者参与一项关于电脑辅助词汇学习的方法测试。具体来说，志愿者将被分为两组。第一组将使用电脑学习，而第二组将使用传统的印刷书籍学习相同的词汇。” 同学们，你们都知道学习英语词汇有多么困难，对吧？ 但因为我和Tony都想获得这50英镑的奖金，我们最终还是决定申请成为志愿者，而且我们幸运地被分到了第一组。
+
+这个过程很有趣，因为它设计成了一种游戏。首先，屏幕上会显示5个词语及其含义，然后一位老师会念出每个词语，并解释它们在句子和语境中的用法。然后，你需要尽可能正确地阅读这些词语，以便电脑能够识别它们并给你评分。接下来，进入一个竞赛环节——没错，最有趣的部分就是你可以测试自己的技能，并与其他参与者竞争。
+
+虽然我和Tony没有获得这50英镑的奖金，但这次电脑辅助的学习经历彻底改变了我们对词汇学习的态度，也让我们度过了一个愉快的周末。
+
+感谢史丹利老师邀请我来做这个演讲，感谢大家倾听。
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code en --target_lang_code zh --text text_en.txt
 Messages:
 [{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'text': 'Good morning everyone. How did you all spend your weekend? Did\nyou go hiking perhaps or climb the mountains? Guess what I\ndid. Not hiking, not climbing, no – I spent the whole of\nyesterday afternoon learning vocab with my best friend Tony! That\nsounds a bit weird and boring, doesn’t it? But in fact it was\nquite the opposite so keep listening and I’ll tell you more…\nLet me think, it was probably a Friday afternoon when Tony and I\nwere on our way home after school and both noticed a giant\nposter placed just at the entrance of subway line 1 ‘Volunteers\nwanted - £50 awards to be won.’ £50 – it’s a lot right?\nObviously, Tony and I stopped to read this poster in more detail.\nThis poster says: ‘A test about computer-based vocab learning\nmethod needs volunteers’. Specifically, ‘volunteers are divided to\ntwo groups. The first group will learn with computers, while the\nsecond group will learn the same words with traditional printed\nbooks.’ Fellow classmates, you know how torturing it is to\nmemorise English vocabulary, don’t you? But as Tony and I\nboth wanted the £50 award, we still decided to apply to be\nvolunteers and luckily we ended up in the first group.\nIt was fun because it was designed like a game. First of all, the\nscreen shows you 5 words and their meanings, and then a teacher\npops up and reads each word aloud and explains its usage in\nsentences and context. You then have to read these words as\ncorrectly as possible so that the computer can identify the words\nand give you a score. Then you enter a battle part – yes, that’s\nright, the fun part is you get a chance to test your skills and beat\nothers.\nAlthough Tony and I didn’t get the £50, this computer-based\nlearning experience completely changed our attitudes to lexical\nlearning and was a great way to spend our weekend.\nThank you Miss Stanley for asking me to deliver this speech and\nthank you all for listening.\n'}]}]
@@ -79,14 +690,74 @@ Output:
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
-(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code en --target_lang_code zh --image image_en.png
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device NPU --source_lang_code en --target_lang_code zh --text text_en.txt
 Messages:
-[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'image': 'sample_image.png'}]}]
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'text': 'Good morning everyone. How did you all spend your weekend? Did\nyou go hiking perhaps or climb the mountains? Guess what I\ndid. Not hiking, not climbing, no – I spent the whole of\nyesterday afternoon learning vocab with my best friend Tony! That\nsounds a bit weird and boring, doesn’t it? But in fact it was\nquite the opposite so keep listening and I’ll tell you more…\nLet me think, it was probably a Friday afternoon when Tony and I\nwere on our way home after school and both noticed a giant\nposter placed just at the entrance of subway line 1 ‘Volunteers\nwanted - £50 awards to be won.’ £50 – it’s a lot right?\nObviously, Tony and I stopped to read this poster in more detail.\nThis poster says: ‘A test about computer-based vocab learning\nmethod needs volunteers’. Specifically, ‘volunteers are divided to\ntwo groups. The first group will learn with computers, while the\nsecond group will learn the same words with traditional printed\nbooks.’ Fellow classmates, you know how torturing it is to\nmemorise English vocabulary, don’t you? But as Tony and I\nboth wanted the £50 award, we still decided to apply to be\nvolunteers and luckily we ended up in the first group.\nIt was fun because it was designed like a game. First of all, the\nscreen shows you 5 words and their meanings, and then a teacher\npops up and reads each word aloud and explains its usage in\nsentences and context. You then have to read these words as\ncorrectly as possible so that the computer can identify the words\nand give you a score. Then you enter a battle part – yes, that’s\nright, the fun part is you get a chance to test your skills and beat\nothers.\nAlthough Tony and I didn’t get the £50, this computer-based\nlearning experience completely changed our attitudes to lexical\nlearning and was a great way to spend our weekend.\nThank you Miss Stanley for asking me to deliver this speech and\nthank you all for listening.\n'}]}]
 
 Prompt:
 <bos><start_of_turn>user
 You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
-Please translate the English text in the provided image into Chinese. Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+Produce only the Chinese translation, without any additional explanations or commentary. Please translate the following English text into Chinese:
+
+
+Good morning everyone. How did you all spend your weekend? Did
+you go hiking perhaps or climb the mountains? Guess what I
+did. Not hiking, not climbing, no – I spent the whole of
+yesterday afternoon learning vocab with my best friend Tony! That
+sounds a bit weird and boring, doesn’t it? But in fact it was
+quite the opposite so keep listening and I’ll tell you more…
+Let me think, it was probably a Friday afternoon when Tony and I
+were on our way home after school and both noticed a giant
+poster placed just at the entrance of subway line 1 ‘Volunteers
+wanted - £50 awards to be won.’ £50 – it’s a lot right?
+Obviously, Tony and I stopped to read this poster in more detail.
+This poster says: ‘A test about computer-based vocab learning
+method needs volunteers’. Specifically, ‘volunteers are divided to
+two groups. The first group will learn with computers, while the
+second group will learn the same words with traditional printed
+books.’ Fellow classmates, you know how torturing it is to
+memorise English vocabulary, don’t you? But as Tony and I
+both wanted the £50 award, we still decided to apply to be
+volunteers and luckily we ended up in the first group.
+It was fun because it was designed like a game. First of all, the
+screen shows you 5 words and their meanings, and then a teacher
+pops up and reads each word aloud and explains its usage in
+sentences and context. You then have to read these words as
+correctly as possible so that the computer can identify the words
+and give you a score. Then you enter a battle part – yes, that’s
+right, the fun part is you get a chance to test your skills and beat
+others.
+Although Tony and I didn’t get the £50, this computer-based
+learning experience completely changed our attitudes to lexical
+learning and was a great way to spend our weekend.
+Thank you Miss Stanley for asking me to deliver this speech and
+thank you all for listening.<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+大家早上好。你们周末过得怎么样？你们可能去远足或者爬山了吧？我呢，昨天下午和我的好朋友Tony一起学习词汇。听起来可能有点奇怪和无聊，但实际上却非常有趣，请继续听下去，我会告诉你们更多。
+
+我想，大概是在周五下午，我和Tony在放学后，注意到地铁1号线的入口处贴着一张海报：“招志愿者 - 奖金50英镑”。 50英镑，这可不是小钱！ 显然，我和Tony都停下来仔细阅读了这张海报。
+
+这张海报上写着：“需要志愿者，进行计算机化词汇学习测试。具体来说，志愿者将被分成两组。第一组将使用计算机，第二组则使用传统的印刷书籍学习相同的词汇。” 同学们，你们知道学习英语词汇有多么困难，对吧？ 但是，因为我和Tony都想得到这50英镑的奖金，所以我们决定申请成为志愿者，结果我们都进入了第一组。
+
+这个过程非常有趣，因为它设计成了一种游戏。 首先，屏幕会显示5个词以及它们的含义，然后一位老师会大声朗读这些词，并解释它们在句子和语境中的用法。 接着，你需要尽可能准确地阅读这些词，以便计算机能够识别它们并给你评分。 之后，进入一场“战斗”，没错，这个有趣的环节，你能够测试自己的能力，并与他人竞争。
+
+虽然我和Tony没有得到50英镑的奖金，但这次利用计算机的学习体验，彻底改变了我们对词汇学习的态度，也成为了我们周末非常有趣的一次经历。
+
+感谢老师Stanley，感谢大家倾听。
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device CPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
 
 
 <start_of_image><end_of_turn>
@@ -94,10 +765,14 @@ Please translate the English text in the provided image into Chinese. Produce on
 
 
 Output:
-请限制使用电脑，以便他人可以查看电子邮件。 感谢您。
+Pedestrian Zone
+
+Childcare Services
+
+IZS, CBS in the Zone
+0 - 24 hours
 
 
-(python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
@@ -123,6 +798,482 @@ IZS, CBS in Supervision
 0 - 24 hours
 
 
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device NPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Pedestrian Zone
+0-24 hours
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device CPU --source_lang_code en --target_lang_code zh --image image_en.png
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Please translate the English text in the provided image into Chinese. Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+请限制使用电脑，以便他人可以查看电子邮件。 感谢您。
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code en --target_lang_code zh --image image_en.png
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Please translate the English text in the provided image into Chinese. Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+请限制使用电脑，以便他人可以查看电子邮件。 感谢您。
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it --device NPU --source_lang_code en --target_lang_code zh --image image_en.png
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'en', 'target_lang_code': 'zh', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional English (en) to Chinese (zh) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.
+Please translate the English text in the provided image into Chinese. Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+请限制使用电脑，以便其他人在线查看邮件。 谢谢。
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format int8 translategemma-4b-it_int8
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:06<00:00,  3.37s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 100% (239 / 239)            | 100% (239 / 239)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:40 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:03 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:06 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device CPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Pedestrian Zone
+Child Supervision
+IZS, CBS in Supervision
+0 - 24 hours
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Pedestrian Zone
+Child Supervision
+IZS, CBS in Care
+0 - 24 hours
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets behind the mountains, the Yellow River flows into the sea. To see further, one must ascend to a higher level.
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int8 --device NPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Pedestrian Zone
+0-24 hours
+
+
+
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format int4 translategemma-4b-it_int4
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.65s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 17% (1 / 239)               | 0% (0 / 238)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| int4_asym, group size 128 | 83% (238 / 239)             | 100% (238 / 238)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:48 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:04 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the daylight fades and the sun sets behind the mountains, the Yellow River flows into the sea. To see a thousand miles, climb one step higher.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device CPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+Baby Zone
+
+Care/Childcare in Progress
+
+IZS, CBS in Care
+0 - 24 hours
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea; to see a thousand miles, one must climb another level.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+Messages:
+[{'role': 'user', 'content': [{'type': 'image', 'source_lang_code': 'cs', 'target_lang_code': 'en', 'image': 'sample_image.png'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Czech (cs) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Czech text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Please translate the Czech text in the provided image into English. Produce only the English translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!
+
+
+<start_of_image><end_of_turn>
+<start_of_turn>model
+
+
+Output:
+"Dog Zone
+
+Assistance Area
+
+IZS, CBS in Assistance
+
+0 - 24 h
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+[ERROR] 15:54:09.153 [vpux-compiler] Got Diagnostic at loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]) : Channels count of input tensor shape and filter shape must be the same: 0 != 20
+loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]): error: Channels count of input tensor shape and filter shape must be the same: 0 != 20
+LLVM ERROR: Failed to infer result type(s):
+"IE.Convolution"(...) {} : (tensor<1x0x1x1xf16>, tensor<1x20x1x1xf16>) -> ( ??? )
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device NPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
+[ERROR] 15:55:14.092 [vpux-compiler] Got Diagnostic at loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]) : Channels count of input tensor shape and filter shape must be the same: 0 != 20
+loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]): error: Channels count of input tensor shape and filter shape must be the same: 0 != 20
+LLVM ERROR: Failed to infer result type(s):
+"IE.Convolution"(...) {} : (tensor<1x0x1x1xf16>, tensor<1x20x1x1xf16>) -> ( ??? )
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format nf4 translategemma-4b-it_nf4
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:07<00:00,  3.56s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 17% (1 / 239)               | 0% (0 / 238)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| nf4, group size 128       | 83% (238 / 239)             | 100% (238 / 238)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:54 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:03 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_nf4 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea;
+If you wish to see a further distance, climb one story higher.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_nf4 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the sun sets behind the mountains, the Yellow River flows into the sea;
+If you wish to see a further distance, climb one story higher.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_nf4 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+As the bright sun descends, and the Yellow River flows into the sea,
+If you wish to see a further distance, climb one step higher.
+
+
+
 (python313_venv) C:\GitHub\translategemma-openvino>
