@@ -14,9 +14,10 @@ Files in this repo:
 - [`image_cs.jpg`](./image_cs.jpg) an image that contains Czech characters used to test image translation. ([`source`](https://c7.alamy.com/comp/2YAX36N/traffic-signs-in-czech-republic-pedestrian-zone-2YAX36N.jpg))
 - [`image_en.png`](./image_en.png) an image that contains English characters used to test image translation. ([`source`](https://raw.githubusercontent.com/esalesky/vistra-benchmark/refs/heads/main/images/f488c322.png))
 
-
-## Download and convert the model and tokenizers
-Instlal required packages for model export. The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
+# Quick Start Guide
+## Prepare Model
+### Install required packages
+Input the following command to instlal required packages for model export. The `--upgrade-strategy eager` option is needed to ensure `optimum-intel` is upgraded to the latest version.
 
 ```sh
 pip install --upgrade-strategy eager -r export-requirements.txt
@@ -26,18 +27,24 @@ pip install --upgrade-strategy eager -r export-requirements.txt
 The script needs to access Hugging Face models. To get the access, please visit below link with you account https://huggingface.co/google/gemma-3-4b-it and hit `log in`
 
 Make sure your [access token](https://huggingface.co/settings/tokens) has been prepared. Make sure [huggingface-cli](https://huggingface.co/docs/huggingface_hub/v0.30.2/guides/cli) has been installed. Open a Command Prompt, run ```huggingface-cli login``` with your access token
-
-### Export model
+```sh
+pip install "huggingface_hub[cli]<1.0,>=0.34.0"
+huggingface-cli login
+```
+- transformers 4.55.4 requires huggingface-hub<1.0,>=0.34.0
+### Download and export model
 Then, run the export with Optimum CLI:
 ```sh
 optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
+- Exported models will be under model_dir(`translategemma-4b-it` in this case) directory
 - When exporting a model, the argument `--weight-format` can be used to quantize the model. The supported weights are `INT4`, `INT8` and `FP16`. Please visit [`OpenVINO model preparation guide`](https://openvinotoolkit.github.io/openvino.genai/docs/guides/model-preparation/convert-to-openvino) for the detail.
 
 
 ## Run
 
 ### Install required packages
+Input the following command to install required packages for model deployment.
 ```
 pip install -r deployment-requirements.txt
 ```
@@ -91,7 +98,7 @@ IZS, CBS in Supervision
 ## Log
 ### Tested devices
 The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` system, with
-* ```iGPU: Intel(R) Arc(TM) 130V GPU, driver 32.0.101.8331 (11/26/2025)```
+* ```iGPU: Intel(R) Arc(TM) 130V GPU, driver 32.0.101.8425 (1/16/2026)```
 * ```NPU: Intel(R) AI Boost, driver 32.0.100.4514 (12/17/2025)```
 
 ### Sample log
