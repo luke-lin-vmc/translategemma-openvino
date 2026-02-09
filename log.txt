@@ -1160,20 +1160,70 @@ IZS, CBS in Assistance
 0 - 24 h
 
 
-(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
-[ERROR] 15:54:09.153 [vpux-compiler] Got Diagnostic at loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]) : Channels count of input tensor shape and filter shape must be the same: 0 != 20
-loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]): error: Channels count of input tensor shape and filter shape must be the same: 0 != 20
-LLVM ERROR: Failed to infer result type(s):
-"IE.Convolution"(...) {} : (tensor<1x0x1x1xf16>, tensor<1x20x1x1xf16>) -> ( ??? )
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format int4 --sym --ratio 1.0 --group-size 128 translategemma-4b-it_int4_npu
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:11<00:00,  5.54s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 17% (1 / 239)               | 0% (0 / 238)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| int4_sym, group size 128  | 83% (238 / 239)             | 100% (238 / 238)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:44 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:03 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:07 • 0:00:00
 
 (python313_venv) C:\GitHub\translategemma-openvino>
-(python313_venv) C:\GitHub\translategemma-openvino>
-(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4 --device NPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
-[ERROR] 15:55:14.092 [vpux-compiler] Got Diagnostic at loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]) : Channels count of input tensor shape and filter shape must be the same: 0 != 20
-loc(fused<{name = "__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", type = "MatMul"}>["__module.model.model.language_model.layers.0.self_attn.q_proj/aten::linear/MatMul", "fc_decomposed", "matmul_0", "as_convolution"]): error: Channels count of input tensor shape and filter shape must be the same: 0 != 20
-LLVM ERROR: Failed to infer result type(s):
-"IE.Convolution"(...) {} : (tensor<1x0x1x1xf16>, tensor<1x20x1x1xf16>) -> ( ??? )
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_int4_npu --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
 
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sinks behind the mountains, the Yellow River flows into the sea; to see a thousand miles, one must ascend another level.
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>
 (python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format nf4 translategemma-4b-it_nf4
@@ -1256,7 +1306,53 @@ As the sun sets behind the mountains, the Yellow River flows into the sea;
 If you wish to see a further distance, climb one story higher.
 
 
-(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_nf4 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code --weight-format nf4 --sym --ratio 1.0 --group-size -1 translategemma-4b-it_nf4_npu
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 2/2 [00:09<00:00,  4.66s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 17% (1 / 239)               | 0% (0 / 238)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| nf4, per-channel          | 83% (238 / 239)             | 100% (238 / 238)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:41 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:02 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-4b-it_nf4_npu --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
 Messages:
 [{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
 
@@ -1271,8 +1367,7 @@ Produce only the English translation, without any additional explanations or com
 
 
 Output:
-As the bright sun descends, and the Yellow River flows into the sea,
-If you wish to see a further distance, climb one step higher.
+As the white sun sets upon the mountains, the Yellow River flows into the sea; to see further, one must climb another level.
 
 
 
