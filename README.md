@@ -24,10 +24,10 @@ pip install --upgrade-strategy eager -r export-requirements.txt
 ```
 
 ### Hugging Face login
-The script needs to access Hugging Face models. To get the access, please visit  https://huggingface.co/google/translategemma-4b-it and hit `log in` to login with you account
+The script needs to download models from Hugging Face. To get the access, please visit https://huggingface.co/google/translategemma-4b-it then login (by hitting `log in`)
 
 Make sure your [access token](https://huggingface.co/settings/tokens) has been prepared. Make sure [huggingface-cli](https://huggingface.co/docs/huggingface_hub/v0.30.2/guides/cli) has been installed. Open a Command Prompt, run ```huggingface-cli login``` with your access token
-```sh
+```
 pip install "huggingface_hub[cli]<1.0,>=0.34.0"
 huggingface-cli login
 ```
@@ -37,7 +37,7 @@ Then, run the export with Optimum CLI:
 ```sh
 optimum-cli export openvino --model google/translategemma-4b-it --trust-remote-code translategemma-4b-it
 ```
-- Exported models will be under model_dir (`translategemma-4b-it` in this example)
+- Models will be exported under model_dir (`translategemma-4b-it` in this example)
 - The argument `--weight-format` can be used to quantize the model. See [Quantization](#Quantization) for the detail
 
 
@@ -60,9 +60,9 @@ translate.py --model_dir MODEL_DIR
 - The arguments `--model_dir`, `--source_lang_code` and `-target_lang_code` are required:
 - Either `--text TEXT` or `--image IMAGE` should be provided
 - The `--device` can be `CPU`, `GPU` or `NPU`
-- Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja) or locally check `chat_template.jinja` under model_dir
+- Language code examples: `en`, `en-GB`, `zh` or `zh-TW`. Full language code can be found [`here`](https://huggingface.co/google/translategemma-4b-it/blob/main/chat_template.jinja) or check `chat_template.jinja` locally under model_dir
 
-### Run Text Translation
+### Text Translation Example
 Command:
 ```
 python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
@@ -76,7 +76,7 @@ Output:
 As the sun sets behind the mountains, the Yellow River flows into the sea. To gain a broader perspective, one must climb to a higher vantage point.
 ```
 
-### Run Image Translation
+### Image Translation Example
 Command:
 ```
 python translate.py --model_dir translategemma-4b-it --device GPU --source_lang_code cs --target_lang_code en --image image_cs.jpg
@@ -106,16 +106,14 @@ The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` 
 * ```NPU: Intel(R) AI Boost, driver 32.0.100.4514 (12/17/2025)```
 
 ### Result
-```
-| Model                      | CPU    | GPU    | NPU    |
-|----------------------------|--------|--------|--------|
-| translategemma-4b-it       | OK     | OK     | OK     |
-| translategemma-4b-it(int8) | OK     | OK     | OK     |
-| translategemma-4b-it(int4) | OK     | OK     | Fail*  |
-| translategemma-4b-it(nf4)  | OK     | OK     | OK**   |
-```
+| Model                | weight | CPU    | GPU    | NPU    |
+|----------------------|--------|--------|--------|--------|
+| translategemma-4b-it |fp16    | OK     | OK     | OK     |
+|                      |int8    | OK     | OK     | OK     |
+|                      |int4    | OK     | OK     | Fail*  |
+|                      |nf4     | OK     | OK     | OK**   |
 - The int4 model fails to run on NPU, check [`log.txt`](./log.txt) for the detail
-- The nf4 model can run on NPU but very slow
+- The nf4 model runs on NPU but very slowly
 ### Log
 [`log.txt`](./log.txt) is provided for reference
 
