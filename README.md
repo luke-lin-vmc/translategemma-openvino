@@ -113,8 +113,8 @@ The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` 
 |                      |int4    | OK     | OK     | OK*    |
 |                      |nf4     | OK     | OK     | OK*    |
 - To run `int4` or `nf4` models on NPU, below argumetns are required when exporting the model. See [LLM Inference on NPU](https://docs.openvino.ai/2025/openvino-workflow-generative/inference-with-genai/inference-with-genai-on-npu.html#llm-inference-on-npu) for the detail
-    - for `int4`: `--sym --ratio 1.0 --group-size 128`
-    - for  `nf4`: `--sym --ratio 1.0 --group-size -1`
+    - for `int4`: `--weight-format int4 --sym --ratio 1.0 --group-size 128`
+    - for `nf4`: `--weight-format nf4 --sym --ratio 1.0 --group-size -1`
 ### Log
 [`log.txt`](./log.txt) is provided for reference
 
