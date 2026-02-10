@@ -1372,3 +1372,493 @@ As the white sun sets upon the mountains, the Yellow River flows into the sea; t
 
 
 (python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code translategemma-12b-it
+Multiple distributions found for package optimum. Picked distribution: optimum
+config.json: 100%|████████████████████████████████████████████████████████████████| 2.99k/2.99k [00:00<00:00, 32.7MB/s]
+C:\Python\python313_venv\Lib\site-packages\huggingface_hub\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\lukelin1\.cache\huggingface\hub\models--google--translategemma-12b-it. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+model.safetensors.index.json: 100%|██████████████████████████████████████████████████| 109k/109k [00:00<00:00, 447kB/s]
+Fetching 5 files:   0%|                                                                          | 0/5 [00:00<?, ?it/s]Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+model-00001-of-00005.safetensors: 100%|███████████████████████████████████████████| 4.98G/4.98G [05:33<00:00, 14.9MB/s]
+model-00003-of-00005.safetensors: 100%|███████████████████████████████████████████| 4.93G/4.93G [12:39<00:00, 6.50MB/s]
+model-00004-of-00005.safetensors: 100%|███████████████████████████████████████████| 4.93G/4.93G [13:48<00:00, 5.95MB/s]
+model-00002-of-00005.safetensors: 100%|███████████████████████████████████████████| 4.93G/4.93G [14:11<00:00, 5.79MB/s]
+model-00005-of-00005.safetensors: 100%|███████████████████████████████████████████| 4.60G/4.60G [16:53<00:00, 4.54MB/s]
+Fetching 5 files: 100%|█████████████████████████████████████████████████████████████████| 5/5 [16:56<00:00, 203.35s/it]
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:45<00:00,  9.12s/it]
+generation_config.json: 100%|██████████████████████████████████████████████████████████| 156/156 [00:00<00:00, 179kB/s]
+tokenizer_config.json: 100%|██████████████████████████████████████████████████████| 1.16M/1.16M [00:00<00:00, 1.28MB/s]
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+tokenizer.model: 100%|████████████████████████████████████████████████████████████| 4.69M/4.69M [00:01<00:00, 4.62MB/s]
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+tokenizer.json: 100%|█████████████████████████████████████████████████████████████| 33.4M/33.4M [00:02<00:00, 13.2MB/s]
+added_tokens.json: 100%|█████████████████████████████████████████████████████████████| 35.0/35.0 [00:00<00:00, 365kB/s]
+special_tokens_map.json: 100%|████████████████████████████████████████████████████████| 662/662 [00:00<00:00, 5.86MB/s]
+chat_template.jinja: 100%|████████████████████████████████████████████████████████| 17.0k/17.0k [00:00<00:00, 2.19MB/s]
+processor_config.json: 100%|█████████████████████████████████████████████████████████| 70.0/70.0 [00:00<00:00, 504kB/s]
+preprocessor_config.json: 100%|███████████████████████████████████████████████████████| 570/570 [00:00<00:00, 5.57MB/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:10 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 100% (337 / 337)            | 100% (337 / 337)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:01:34 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code --weight-format int8 translategemma-12b-it_int8
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:46<00:00,  9.35s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 100% (337 / 337)            | 100% (337 / 337)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:01:48 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:04 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code --weight-format int4 translategemma-12b-it_int4
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:42<00:00,  8.49s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 9% (1 / 337)                | 0% (0 / 336)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| int4_asym, group size 128 | 91% (336 / 337)             | 100% (336 / 336)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:01:50 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:05 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:07 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code --weight-format int4 --sym --ratio 1.0 --group-size 128 translategemma-12b-it_int4_npu
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:43<00:00,  8.63s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 9% (1 / 337)                | 0% (0 / 336)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| int4_sym, group size 128  | 91% (336 / 337)             | 100% (336 / 336)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:01:51 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:04 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:07 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code --weight-format nf4 translategemma-12b-it_nf4
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:50<00:00, 10.00s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 9% (1 / 337)                | 0% (0 / 336)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| nf4, group size 128       | 91% (336 / 337)             | 100% (336 / 336)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:02:16 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:05 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+(python313_venv) C:\GitHub\translategemma-openvino>optimum-cli export openvino --model google/translategemma-12b-it --trust-remote-code --weight-format nf4 --sym --ratio 1.0 --group-size -1 translategemma-12b-it_nf4_npu
+Multiple distributions found for package optimum. Picked distribution: optimum
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 5/5 [00:42<00:00,  8.44s/it]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+WARNING:nncf:NNCF provides best results with torch==2.9.*, while current torch version is 2.8.0+cpu. If you encounter issues, consider switching to torch==2.9.*
+C:\Python\python313_venv\Lib\site-packages\transformers\cache_utils.py:108: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if self.keys is None or self.keys.numel() == 0:
+C:\Python\python313_venv\Lib\site-packages\transformers\models\gemma3\modeling_gemma3.py:917: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if token_type_ids is not None and inputs_embeds.shape[1] != 1:
+C:\Python\python313_venv\Lib\site-packages\transformers\masking_utils.py:190: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:207: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(0.0, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\optimum\exporters\openvino\model_patcher.py:208: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(torch.finfo(torch.float16).min, device=mask.device, dtype=dtype),
+C:\Python\python313_venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:82: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = query.shape[2] > 1 and attention_mask is None and getattr(module, "is_causal", True)
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_asym, per-channel    | 9% (1 / 337)                | 0% (0 / 336)                           |
++---------------------------+-----------------------------+----------------------------------------+
+| nf4, per-channel          | 91% (336 / 337)             | 100% (336 / 336)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:02:12 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (1 / 1)                | 100% (1 / 1)                           |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:05 • 0:00:00
+INFO:nncf:Statistics of the bitwidth distribution:
++---------------------------+-----------------------------+----------------------------------------+
+| Weight compression mode   | % all parameters (layers)   | % ratio-defining parameters (layers)   |
++===========================+=============================+========================================+
+| int8_sym, per-channel     | 100% (164 / 164)            | 100% (164 / 164)                       |
++---------------------------+-----------------------------+----------------------------------------+
+Applying Weight Compression ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% • 0:00:08 • 0:00:00
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6E19-CE53
+
+ Directory of C:\GitHub\translategemma-openvino
+
+02/10/2026  02:53 AM    <DIR>          .
+02/06/2026  02:00 PM    <DIR>          ..
+02/04/2026  04:31 PM             1,615 chat_template-gemma3.json
+02/06/2026  03:28 PM               319 deployment-requirements.txt
+02/06/2026  03:28 PM               986 export-requirements.txt
+02/06/2026  01:49 PM           116,604 image_cs.jpg
+02/02/2026  05:20 PM           703,073 image_en.png
+02/06/2026  02:03 PM            11,558 LICENSE
+02/09/2026  12:55 PM           125,542 log.txt
+02/09/2026  05:51 PM             6,799 README.md
+02/06/2026  01:43 PM             1,961 text_en.txt
+02/06/2026  02:40 PM                74 text_zh-TW.txt
+02/10/2026  02:22 PM             5,326 translate.py
+02/09/2026  06:50 PM    <DIR>          translategemma-12b-it
+02/09/2026  07:56 PM    <DIR>          translategemma-12b-it_int4
+02/09/2026  08:29 PM    <DIR>          translategemma-12b-it_int4_npu
+02/09/2026  07:23 PM    <DIR>          translategemma-12b-it_int8
+02/10/2026  02:19 AM    <DIR>          translategemma-12b-it_nf4
+02/10/2026  02:53 AM    <DIR>          translategemma-12b-it_nf4_npu
+02/08/2026  03:00 PM    <DIR>          translategemma-4b-it
+02/08/2026  03:49 PM    <DIR>          translategemma-4b-it_int4
+02/09/2026  12:18 PM    <DIR>          translategemma-4b-it_int4_npu
+02/08/2026  04:01 PM    <DIR>          translategemma-4b-it_int8
+02/08/2026  04:15 PM    <DIR>          translategemma-4b-it_nf4
+02/09/2026  12:48 PM    <DIR>          translategemma-4b-it_nf4_npu
+02/10/2026  03:21 AM    <DIR>          vlm_cache
+              11 File(s)        977,974 bytes
+              15 Dir(s)  432,821,821,440 bytes free
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int8 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets beyond the mountains, and the Yellow River flows into the sea. To extend your vision and see even further, you must climb to a higher level.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int8 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets beyond the mountains, and the Yellow River flows into the sea. To extend your vision and see even further, you must climb to a higher level.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int8 --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Traceback (most recent call last):
+  File "C:\GitHub\translategemma-openvino\translate.py", line 130, in <module>
+    main()
+    ~~~~^^
+  File "C:\GitHub\translategemma-openvino\translate.py", line 122, in main
+    output = pipe.generate(prompt, generation_config=config)
+RuntimeError: Exception from src\inference\src\cpp\infer_request.cpp:246:
+Exception from src\plugins\intel_npu\src\utils\src\zero\zero_wrappers.cpp:227:
+L0 zeCommandQueueExecuteCommandLists result: ZE_RESULT_ERROR_OUT_OF_HOST_MEMORY, code 0x70000002 - insufficient host memory to satisfy call
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int4 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets beyond the mountains,
+The Yellow River flows into the sea.
+To broaden your vision, you must ascend to a higher level.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int4 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun sets beyond the mountains,
+The Yellow River flows into the sea.
+To extend your vision a thousand miles,
+You must ascend to a higher level.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_int4_npu --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+’பயன்பாடுகளின்
+Theபயன்பாடுகளின்சபையில்விளக்குகள்விளக்குகளைசேவிப்பிறந்துவிமானத்தைசேவிப்பிறவிவிளக்குகளைசேவிப்பிறவிவிளக்குகளைசேவிப்பிறவிவிளக்குகளைசேவிப்பிறவிவிஎன்றசபையில்விளக்களில்விளயமானபцииவிளகினதுசபையில்விளகினதுசபையில்விளகினதுசபையில்விளகினதுசபையில்விளகівся
+
+Here are a few options for translatingவிஷயங்களின்சபையில்விளகினது:
+
+1.  விஷயங்களின்சபையில்விளகினது: “The sun’s light fadesவிషயங்களின்சபையில்விచேன்விకైவிకైவிకైவிకైவிకైவிకైவிకైவிకైவிకவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவிவி
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_nf4 --device CPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun dips behind the mountains, and the Yellow River flows into the sea; to extend your vision further, ascend another story.
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_nf4 --device GPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+The sun dips behind the mountains, the Yellow River flows into the sea; to extend your vision further, ascend another level.
+
+python translate.py --model_dir translategemma-12b-it_nf4_npu --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+
+(python313_venv) C:\GitHub\translategemma-openvino>python translate.py --model_dir translategemma-12b-it_nf4_npu --device NPU --source_lang_code zh-TW --target_lang_code en --text text_zh-TW.txt
+Messages:
+[{'role': 'user', 'content': [{'type': 'text', 'source_lang_code': 'zh-TW', 'target_lang_code': 'en', 'text': '白日依山盡，黃河入海流；欲窮千里目，更上一層樓。\n'}]}]
+
+Prompt:
+<bos><start_of_turn>user
+You are a professional Chinese (zh-TW) to English (en) translator. Your goal is to accurately convey the meaning and nuances of the original Chinese text while adhering to English grammar, vocabulary, and cultural sensitivities.
+Produce only the English translation, without any additional explanations or commentary. Please translate the following Chinese text into English:
+
+
+白日依山盡，黃河入海流；欲窮千里目，更上一層樓。<end_of_turn>
+<start_of_turn>model
+
+
+Output:
+
+
+
+
+(python313_venv) C:\GitHub\translategemma-openvino>

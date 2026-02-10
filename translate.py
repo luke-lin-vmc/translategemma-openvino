@@ -13,6 +13,7 @@ from openvino import Tensor
 from pathlib import Path
 from transformers import AutoTokenizer
 import json
+import time
 
 
 def read_image(path: str) -> Tensor:
@@ -118,10 +119,13 @@ def main():
     pipe.get_tokenizer().set_chat_template(GEMMA3_CHAT_TEMPLATE)
     # [WORKAROUND ENDS]
 
+    start = time.time()
     if content == "text":
         output = pipe.generate(prompt, generation_config=config)
     else:  # conten is "image"
         output = pipe.generate(prompt, images=rgb, generation_config=config)
+    end = time.time()
+    print(f"Processing time: {(end - start) * 1000:.2f} ms")
 
     print(f"Output:\n{output}\n")
 

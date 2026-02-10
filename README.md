@@ -106,15 +106,23 @@ The pipeline is verified on a ```Intel(R) Core(TM) Ultra 5 238V (Lunar Lake)``` 
 * ```NPU: Intel(R) AI Boost, driver 32.0.100.4514 (12/17/2025)```
 
 ### Result
-| Model                | weight | CPU    | GPU    | NPU    |
-|----------------------|--------|--------|--------|--------|
-| translategemma-4b-it |fp16    | OK     | OK     | OK     |
-|                      |int8    | OK     | OK     | OK     |
-|                      |int4    | OK     | OK     | OK*    |
-|                      |nf4     | OK     | OK     | OK*    |
-- To run `int4` or `nf4` models on NPU, below argumetns are required when exporting the model. See [LLM Inference on NPU](https://docs.openvino.ai/2025/openvino-workflow-generative/inference-with-genai/inference-with-genai-on-npu.html#llm-inference-on-npu) for the detail
+| Model                 | weight | CPU    | GPU    | NPU    |
+|-----------------------|--------|--------|--------|--------|
+| translategemma-4b-it  |fp16    | OK     | OK     | OK     |
+|                       |int8    | OK     | OK     | OK     |
+|                       |int4    | OK     | OK     | OK(1)  |
+|                       |nf4     | OK     | OK     | OK(1)  |
+| translategemma-12b-it |int8    | OK     | OK     | NG(2)  |
+|                       |int4    | OK     | OK     | NG(3)  |
+|                       |nf4     | OK     | OK     | NG(4)  |
+
+
+- (1) To run `int4` or `nf4` models on `NPU`, below argumetns are required when exporting the model. See [LLM Inference on NPU](https://docs.openvino.ai/2025/openvino-workflow-generative/inference-with-genai/inference-with-genai-on-npu.html#llm-inference-on-npu) for the detail
     - for `int4`: `--weight-format int4 --sym --ratio 1.0 --group-size 128`
     - for `nf4`: `--weight-format nf4 --sym --ratio 1.0 --group-size -1`
+- (2) Failed due to insufficient memory, see [`log.txt`](./log.txt) for the detail
+- (3) Output is garbage, see [`log.txt`](./log.txt) for the detail
+- (4) No output, see [`log.txt`](./log.txt) for the detail
 ### Log
-[`log.txt`](./log.txt) is provided for reference
+Full log [`log.txt`](./log.txt) is provided for reference
 
