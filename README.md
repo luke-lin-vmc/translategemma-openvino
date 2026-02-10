@@ -1,6 +1,6 @@
 # About TranslateGemma-OpenVINO
 
-Python sample code that runs [TranslateGemma](https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/) on Intel devices (`CPU`, `GPU`, `NPU`) by using [`OpenVINO GenAI`](
+Python sample code that runs [TranslateGemma](https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/) on Intel devices (`CPU`, `GPU`, `NPU`) by using [OpenVINO GenAI](
 https://github.com/openvinotoolkit/openvino.genai) pipeline.
 
 
@@ -10,7 +10,7 @@ Files in this repo:
  - [`deployment-requirements.txt`](./deployment-requirements.txt) required Python packages for model deployment. ([`download link`](https://github.com/openvinotoolkit/openvino.genai/blob/releases/2026/0/samples/deployment-requirements.txt))
  - [`chat_template-gemma3.json`](./chat_template-gemma3.json) Gemma3 chat_template used to workaround the validation error of OV GenAI VLM pipeline ([`download link`](https://huggingface.co/google/gemma-3-4b-it/blob/main/chat_template.json))
 - [`text_en.txt`](./text_en.txt) an English text file used to test text translation. ([`source`](https://learning.cambridgeinternational.org/classroom/pluginfile.php/219010/mod_label/intro/Writing_a_speech.pdf))
-- [`text_zh-TW.txt`](./text_zh-TW.txt) a (Traditional)Chinese text file used to test text translation. ([`source`](https://zh.wikipedia.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93))
+- [`text_zh-TW.txt`](./text_zh-TW.txt) a (Traditional) Chinese text file used to test text translation. ([`source`](https://zh.wikipedia.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93))
 - [`image_cs.jpg`](./image_cs.jpg) an image that contains Czech characters used to test image translation. ([`source`](https://c7.alamy.com/comp/2YAX36N/traffic-signs-in-czech-republic-pedestrian-zone-2YAX36N.jpg))
 - [`image_en.png`](./image_en.png) an image that contains English characters used to test image translation. ([`source`](https://raw.githubusercontent.com/esalesky/vistra-benchmark/refs/heads/main/images/f488c322.png))
 
